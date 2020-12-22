@@ -1,0 +1,109 @@
+<StackLayout>
+    <TextField class="search" hint="chercher votre produit " text=""></TextField>
+    <StackLayout>
+        <GridLayout height="350" >
+            <Carousel #myCarousel debug="true" [items]="appData.promotion" (pageChanged)="myChangePageEvent($event)"
+                android:indicatorAnimation="slide" indicatorColor="#FF6C47" indicatorOffset="0, 25"
+                showIndicator="true">
+                <CarouselItem *ngFor="let item of appData.promotion,let i=index" padding="15" verticalAlignment="middle"
+                    (tap)="myTapPageEvent()">
+                    <StackLayout class="product-holder" [backgroundImage]="item.imageUrl">
+                        <GridLayout rows="auto,*, auto" class="mask">
+                            <Label row="0" [text]="item.productname" 
+                                class="h1 extra-bold" textWrap="true"></Label>
+
+                            <GridLayout row="1" rows="auto,auto, auto" columns="auto,auto">
+
+                                <Label row="0" colSpan="2" *ngIf="item.discount" class="discount"
+                                    horizontalAlignment="left" verticalAlignment="middle" 
+                                    textWrap="true">
+                                    <FormattedString>
+                                        <Span class="rate h1 extra-bold" [text]="item.discount"></Span>
+                                        <Span class="percentage"  text="%"></Span>
+                                    </FormattedString>
+                                </Label>
+
+                                <Label row="1" colSpan="2" *ngIf="item.discount" class="discount-desc"
+                                    horizontalAlignment="left"
+                                    text="de redection"
+                                    textWrap="true"></Label>
+                                
+
+                                
+<Label row="2" col="0" class="medium price">
+    <FormattedString>
+        <Span class="new-price" [text]="(item.price*item.discount)/100+'Dhs'"></Span>
+        <Span class="text" text=" Au lieu de "></Span>
+        <Span class="old-price" [text]="item.price+'Dhs'"></Span>
+    </FormattedString>
+</Label>
+                            </GridLayout>
+
+                            <Button row="2" text="Acheter"   width="100%"
+                                class="btn btn-primary -rounded" (tap)="buyHandler()"></Button>
+                        </GridLayout>
+                    </StackLayout>
+
+                    <!--       <CradView shadow="3" elevation="20">
+                            <GridLayout row="auto" class="product-slider">
+                                                        <Image [src]="item.imageUrl" stretch="aspectFill"></Image>
+                                                        <Label [text]="item.productname" horizontalAlignment="left"
+                                                            verticalAlignment="top" class="h1" textWrap="true"></Label>
+
+                                                        <GridLayout rows="auto,auto, auto" columns="auto,auto"
+                                                            height="120">
+
+                                                            <Label row="0" colSpan="2" *ngIf="item.discount"
+                                                                class="discount" horizontalAlignment="left"
+                                                                verticalAlignment="middle" [text]="item.discount+'%'"
+                                                                textWrap="true"></Label>
+
+                                                            <Label row="1" colSpan="2" *ngIf="item.discount"
+                                                                class="discount-desc" horizontalAlignment="left"
+                                                                verticalAlignment="middle" text="de redection"
+                                                                textWrap="true"></Label>
+
+                                                            <Label row="2" col="0" class="desc" [text]="item.price"
+                                                                class="price" textWrap="true"></Label>
+
+                                                            <Label row="2" col="1" *ngIf="item.discount"
+                                                                class="discounted-price" [text]="item.price"
+                                                                class="price" textWrap="true"></Label>
+                                                        </GridLayout>
+
+
+                                                        <Button text="Acheter" horizontalAlignment="center"
+                                                            verticalAlignment="bottom" width="100%"
+                                                            class="btn btn-primary -rounded"
+                                                            (tap)="buyHandler()"></Button>
+
+                            </GridLayout>
+                        </CradView>
+ -->
+                </CarouselItem>
+            </Carousel>
+        </GridLayout>
+        <StackLayout class="product-list">
+            <ListView [items]="appData.productList" (loaded)="onLoaded(event)" (itemLoading)="onItemLoading(event)"
+                (itemTap)="onItemTap(event)" class="list-group">
+                <ng-template let-item="item" let-odd="odd" let-even="even">
+                    <StackLayout orientation="horizontal">
+                        <StackLayout [backgroundImage]="item.imageUrl" class="image">
+
+                        </StackLayout>
+                        <StackLayout>
+                            <Label [text]="item.productname" class="list-group-item"></Label>
+                            <StackLayout *ngIf="item.starredReview">
+                                <ns-starred-review [starredReviewRate]="item.starredReview"></ns-starred-review>
+                            </StackLayout>
+
+                            <Label class="price" [text]="item.price+'Dhs'" textWrap="true"></Label>
+
+
+                        </StackLayout>
+                    </StackLayout>
+                </ng-template>
+            </ListView>
+        </StackLayout>
+    </StackLayout>
+</StackLayout>
