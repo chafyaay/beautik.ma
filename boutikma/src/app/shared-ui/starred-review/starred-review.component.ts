@@ -1,5 +1,7 @@
-import { Component, OnInit, Input, AfterContentInit, AfterViewChecked, AfterContentChecked } from '@angular/core';
-import { Page, AbsoluteLayout, View } from '@nativescript/core/ui';
+import { Component, OnInit, Input, AfterContentInit, AfterViewChecked, AfterContentChecked, OnChanges, SimpleChanges, ElementRef, ViewChild, AfterViewInit } from '@angular/core';
+import { Page, AbsoluteLayout, View, Button, StackLayout } from '@nativescript/core/ui';
+import { fromEvent } from "rxjs";
+import { take } from "rxjs/operators";
 import { EventData } from '@nativescript/core';
 
 @Component({
@@ -8,21 +10,35 @@ import { EventData } from '@nativescript/core';
   styleUrls: ['./starred-review.component.scss']
 })
 export class StarredReviewComponent implements OnInit {
+  @ViewChild('myChild', { static: false }) myChild:ElementRef;
 
-  @Input() starredReviewRate:number;
+  @Input() starredReviewRate:any;
   _perWidth;
-  constructor(private page:Page) { }
+  constructor(private page: Page) { }
+
+
+
+ 
  
 
   ngOnInit(): void {
-
+  
   }
-
+ngOnChanges() {
+   
+}
  
 
-  async onloadReviewHolder(args:EventData){
-    const reviewHolder = this.page.getViewById('reviewHolder') as any
-    this._perWidth = reviewHolder.getActualSize().width * this.starredReviewRate / 5  
+   onloadReviewHolder(args:EventData){
+    
+     setTimeout(() => {
+       const reviewHolder =args.object as AbsoluteLayout;
+       
+      this._perWidth = reviewHolder.getActualSize().width * parseInt(this.starredReviewRate) / 5
+      console.log("++", this.starredReviewRate)
+      console.log(this._perWidth, reviewHolder.getActualSize().width)
+
+    }, 10); 
 
   }
 

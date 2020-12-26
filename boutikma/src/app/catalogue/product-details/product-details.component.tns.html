@@ -1,0 +1,68 @@
+ <GridLayout rows="*,auto">
+ <ScrollView row="0" orientation="vertical">
+        <StackLayout row="0">
+            <StackLayout class="product-details" height="70%">
+                <StackLayout class="prd-image" backgroundImage="{{product.imageUrl}}">
+                </StackLayout>
+
+                <Label [text]="product.productname" class="prd-title medium" textWrap="true"></Label>
+                <Label [text]="product.description" class="prd-desc regular" textWrap="true"></Label>
+
+                <StackLayout [visibility]="product.discount ? 'visible' : 'collapsed'">
+                    <Label row="0" col="0" textWrap="true" class="price bold">
+                        <FormattedString>
+                            <Span [text]="(product.price*product.discount)/100+'Dhs'"></Span>
+
+                            <Span class="regular" [text]="' au lieu de '"></Span>
+                            <Span [text]="product.price+'Dhs'"></Span>
+
+                        </FormattedString>
+                    </Label>
+                    <Label row="1" colSpan="2" text="Economizez {{product.discount}}%" textWrap="true"></Label>
+                </StackLayout>
+
+                <Label class="hr" textWrap="true"></Label>
+                <Label text="Avis({{product.avis.length}})" class="avis" textWrap="true"></Label>
+                
+                <StackLayout>
+
+                
+
+
+
+  <ListView [items]="product.avis"  class="list-group">
+      <ng-template let-item="item" let-odd="odd" let-even="even">
+          <StackLayout orientation="horizontal">
+                    <GridLayout  rows="auto,auto,auto,auto"
+                        columns="auto,auto">
+                        <Image row="0" col="0" src="~/assests/images/48.jpg"></Image>
+                        <Label row="0" col="1" [text]="item.autor" textWrap="true"></Label>
+                        <StackLayout height="30" row="1" col="0" colSpan="2">
+                            <ns-starred-review [starredReviewRate]="item.stars"></ns-starred-review>
+                        </StackLayout>
+                        <Label row="2" col="0" colSpan="2" [text]="item.comment" textWrap="true"></Label>
+                    </GridLayout>
+          </StackLayout>
+      </ng-template>
+  </ListView> 
+
+                    
+                </StackLayout>
+
+                
+
+            </StackLayout>
+             <ListView [items]="product.productList" (loaded)="onLoaded($event)" (itemTap)="onItemTap($event)"
+                 class="list-group">
+                 <ng-template let-item="item" let-odd="odd" let-even="even">
+                 </ng-template>
+             </ListView>
+        </StackLayout>
+    </ScrollView>
+    <StackLayout row="1" class="btn-holder">
+        <Button class="btn btn-primary" text="Acheter" (tap)="acheter()"></Button>
+    </StackLayout>
+</GridLayout>
+
+
+

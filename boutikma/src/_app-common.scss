@@ -28,18 +28,20 @@
 }
 
 Label{
-font-family: Raleway,Raleway-Medium;
+font-family: Roboto,Roboto-Medium;
 }
 
 .btn{
-    background: #2F54ED;
+    background: tomato;
     color: white;
     font-size: 18;
     font-weight: 400;
-    font-family: Raleway,Raleway-Medium;
+    font-family: Roboto,Roboto-Medium;
+    border-radius: 6;
+    
 }
 
-.regular{font-family: Raleway-Regular,Ralway; font-weight: 400;}
-.medium{font-family: Raleway-Medium,Ralway; font-weight: 600;}
-.bold{font-family: Raleway-Bold,Ralway; font-weight: 700;}
-.extra-bold {font-family: Raleway-ExtraBold, Ralway;font-weight: 400;}
+.regular{font-family: Roboto-Regular,Ralway; font-weight: 400;}
+.medium{font-family: Roboto-Medium,Ralway; font-weight: 600;}
+.bold{font-family: Roboto-Bold,Ralway; font-weight: 700;}
+.extra-bold {font-family: Roboto-ExtraBold, Ralway;font-weight: 400;}

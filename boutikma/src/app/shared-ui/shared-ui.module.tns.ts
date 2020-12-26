@@ -1,5 +1,5 @@
 
-import { NgModule } from '@angular/core';
+import { NgModule, NO_ERRORS_SCHEMA } from '@angular/core';
 import { StarredReviewComponent } from './starred-review/starred-review.component';
 
 
@@ -10,6 +10,8 @@ import { StarredReviewComponent } from './starred-review/starred-review.componen
   ],
   exports: [StarredReviewComponent],
   entryComponents: [StarredReviewComponent],
-  imports: [  ]
+  imports: [  ],
+  schemas: [NO_ERRORS_SCHEMA]
+
 })
 export class SharedUiModule { }

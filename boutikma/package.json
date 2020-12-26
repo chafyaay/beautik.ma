@@ -32,6 +32,7 @@
     "core-js": "^3.6.0",
     "nativescript-cardview": "^3.2.0",
     "nativescript-carousel": "^7.0.1",
+    "nativescript-photoviewer": "^2.1.5",
     "reflect-metadata": "~0.1.12",
     "rxjs": "~6.6.0",
     "tslib": "1.10.0",

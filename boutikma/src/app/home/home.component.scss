@@ -8,22 +8,21 @@
           padding: 20;
 
           .h1{
-              font-size: 36;
-              text-transform: uppercase;
-              letter-spacing: .07;
+              font-size: 29;
+              letter-spacing: .042;
               line-height: 1;
           }
 
           .discount {
               .rate {
-                  font-size: 45;
+                  font-size: 90;
                   color: #FF6C47;
               }
 
               .percentage {
                   margin-left: 10;
                   color: #FF6C47;
-                  font-size: 25;
+                  font-size: 15;
               }
 
           }
@@ -32,12 +31,12 @@
               background:#FF6C47;
               text-transform: uppercase; 
               padding: 2 5;
-              font-size: 18;
+              font-size: 16;
               color: #f7f7f7;
           }
 .price{
     color: #f7f7f7;
-        font-size: 16;
+        font-size: 14;
         background: #FF6C47;
         padding: 2 5;
         margin-top: 5;
@@ -47,10 +46,10 @@
 .old-price {
     text-decoration: line-through;
     color: black;
-        font-size: 24;
+        font-size: 14;
 }
 .new-price {
-    font-size: 24; 
+    font-size: 14; 
 }
 }
 }
