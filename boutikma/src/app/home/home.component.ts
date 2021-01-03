@@ -17,11 +17,11 @@ export class HomeComponent implements OnInit {
   @ViewChild("myCarousel", { static: false }) carouselView: ElementRef<Carousel>;
 
   myTapPageEvent(args) {
-    console.log('Tapped page index: ' + (this.carouselView.nativeElement.selectedPage));
+    //console.log('Tapped page index: ' + (this.carouselView.nativeElement.selectedPage));
   }
 
   myChangePageEvent(args) {
-    console.log('Page changed to index: ' + args.index);
+    //console.log('Page changed to index: ' + args.index);
   };
 
   public appData=appData;

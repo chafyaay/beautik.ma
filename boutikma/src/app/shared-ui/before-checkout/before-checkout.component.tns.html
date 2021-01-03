@@ -1,0 +1,76 @@
+ <StackLayout padding="17">
+     <GridLayout class="card" rows="*,auto" columns="auto,*" height="225">
+
+         <StackLayout verticalAlignment="top" class="product-image" row="0" col="0" rowSpan="3" width="100" height="100"
+             [backgroundImage]="productInfo.imageUrl">
+         </StackLayout>
+
+         <StackLayout row="0" col="1">
+             <Label class="h3 title" [text]="productInfo.productname" textWrap="true"></Label>
+
+             <StackLayout>
+                 <Label text="" textWrap="true">
+                     <FormattedString>
+                         <Span class="price new-price" [text]="(productInfo.price*productInfo.discount)/100"></Span>
+                         <Span class="price new-price" [text]="' Dhs '"></Span>
+                         <Span class="price init-price" [text]="productInfo.price "></Span>
+                         <Span class="price init-price" [text]="' Dhs'"></Span>
+                     </FormattedString>
+                 </Label>
+             </StackLayout>
+
+         </StackLayout>
+
+
+
+         <GridLayout row="1" colSpan="2" columns="auto,*,auto,auto,auto" class="footer">
+             <Button col="0" (tap)="remove()" class="-btn remove">
+                 <FormattedString>
+                     <Span class="ico-moon" text="&#xe9ac;"></Span>
+                     <Span class="init-price" text="SUPPRIMER"></Span>
+                 </FormattedString>
+             </Button>
+
+             <Button col="2" class="ico-moon -btn dec" text="&#xea0b;" (tap)="decrement()"></Button>
+             <TextField col="3" [text]="qnte" class="-btn qnte"></TextField>
+             <Button col="4" class="ico-moon -btn inc" text="&#xea0a;" (tap)="increment()"></Button>
+
+         </GridLayout>
+
+     </GridLayout>
+
+      <GridLayout   class="total" height="100" marginTop="10" width="100%">
+          <Label class="h3" text="Total TTC" horizontalAlignment="left"></Label>
+          
+          <Label horizontalAlignment="right" class="h3 bold"
+              [visibility]="productInfo.discount ? 'visible' : 'collapsed'">
+              <FormattedString>
+                  <Span [text]="((productInfo.price*productInfo.discount)/100)*qnte"></Span>
+                  <Span text=" Dhs"></Span>
+              </FormattedString>
+          </Label>
+          
+
+          <Label horizontalAlignment="right" [visibility]="!productInfo.discount ? 'visible' : 'collapsed'">
+              <FormattedString>
+                  <Span class="h3 bold" [text]="productInfo.price*qnte" textWrap="true"></Span>
+                  <Span class="h3 bold" text=" Dhs" textWrap="true"></Span>
+              </FormattedString>
+          </Label>
+
+      </GridLayout>
+
+
+
+     <Button col="0" (tap)="order()" class="-btn order  medium" text="Finalizez votre commande">
+     </Button>
+
+     <Button col="0" (tap)="call()" class="-btn call">
+         <FormattedString>
+             <Span class="ico-moon" text="&#xe942;"></Span>
+             <Span class="medium" text="   Appellez pour commander"></Span>
+         </FormattedString>
+     </Button>
+
+
+ </StackLayout>

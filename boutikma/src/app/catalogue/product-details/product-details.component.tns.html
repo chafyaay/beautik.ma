@@ -1,68 +1,110 @@
- <GridLayout rows="*,auto">
- <ScrollView row="0" orientation="vertical">
-        <StackLayout row="0">
-            <StackLayout class="product-details" height="70%">
-                <StackLayout class="prd-image" backgroundImage="{{product.imageUrl}}">
-                </StackLayout>
+ 
+ <ActionBar title="Styling">
+     <NavigationButton text="&#xe93a;" class="ico-moon" visibility="visible"></NavigationButton>
 
-                <Label [text]="product.productname" class="prd-title medium" textWrap="true"></Label>
-                <Label [text]="product.description" class="prd-desc regular" textWrap="true"></Label>
+     <ActionItem ios.position="right">
+         <GridLayout width="60">
+            <app-navbar></app-navbar>
+         </GridLayout>  
+     </ActionItem>
+ </ActionBar>
 
-                <StackLayout [visibility]="product.discount ? 'visible' : 'collapsed'">
-                    <Label row="0" col="0" textWrap="true" class="price bold">
-                        <FormattedString>
-                            <Span [text]="(product.price*product.discount)/100+'Dhs'"></Span>
+ <AbsoluteLayout>
+     <GridLayout rows="*,auto" top="0" left="0" width="100%" height="100%">
+         <StackLayout row="*">
+             <ScrollView>
+                 <StackLayout class="product-details">
+                     <StackLayout>
 
-                            <Span class="regular" [text]="' au lieu de '"></Span>
-                            <Span [text]="product.price+'Dhs'"></Span>
-
-                        </FormattedString>
-                    </Label>
-                    <Label row="1" colSpan="2" text="Economizez {{product.discount}}%" textWrap="true"></Label>
-                </StackLayout>
-
-                <Label class="hr" textWrap="true"></Label>
-                <Label text="Avis({{product.avis.length}})" class="avis" textWrap="true"></Label>
-                
-                <StackLayout>
-
+                         <StackLayout class="gallery">
+                             <StackLayout class="prd-image" backgroundImage="{{selectedImage}}">
                 
 
+                             </StackLayout>
+                             <WrapLayout orientation="horizontal" class="pointer-holder" width="100%" >
+                                        <StackLayout *ngFor="let image of gallery,let i=index"
+                                            class="pointer {{i==selectedImageIndex?'active':''}}"
+                                            backgroundImage="{{image}}" (tap)="selectImage(i)" >
+                                        </StackLayout>
+                             </WrapLayout>
+                         </StackLayout>
+
+                         <Label [text]="product.productname" class="prd-title medium" textWrap="true"></Label>
+                         <Label [text]="product.description" class="prd-desc regular" textWrap="true"></Label>
+
+                         <StackLayout [visibility]="product.discount ? 'visible' : 'collapsed'">
+                             <Label row="0" col="0" textWrap="true" class="price bold">
+                                 <FormattedString>
+                                     <Span [text]="(product.price*product.discount)/100"></Span>
+                                     <Span text="Dhs" fontSize="14"></Span>
+
+                                     <Span class="regular" [text]="' au lieu de '"></Span>
+                                     <Span style="text-decoration: line-through;" fontSize="14"
+                                         [text]="product.price"></Span>
+                                     <Span style="text-decoration: line-through;" text="Dhs" fontSize="14"></Span>
+
+                                 </FormattedString>
+                             </Label>
+                             <Label  colSpan="2" text="Economizez {{product.discount}}%" textWrap="true"></Label>
+                             <Label  colSpan="2" text="{{product.qnt}} articles restants" textWrap="true"></Label>
+                         </StackLayout>
+
+                        
 
 
-  <ListView [items]="product.avis"  class="list-group">
-      <ng-template let-item="item" let-odd="odd" let-even="even">
-          <StackLayout orientation="horizontal">
-                    <GridLayout  rows="auto,auto,auto,auto"
-                        columns="auto,auto">
-                        <Image row="0" col="0" src="~/assests/images/48.jpg"></Image>
-                        <Label row="0" col="1" [text]="item.autor" textWrap="true"></Label>
-                        <StackLayout height="30" row="1" col="0" colSpan="2">
-                            <ns-starred-review [starredReviewRate]="item.stars"></ns-starred-review>
-                        </StackLayout>
-                        <Label row="2" col="0" colSpan="2" [text]="item.comment" textWrap="true"></Label>
-                    </GridLayout>
-          </StackLayout>
-      </ng-template>
-  </ListView> 
+                         <!-- avis -->
 
-                    
-                </StackLayout>
+                         <Label class="hr" textWrap="true"></Label>
+                         <Label text="Avis({{comments.length}})" class="avis" marginBottom="20"
+                             textWrap="true"></Label>
 
-                
+                         <GridLayout *ngFor="let item of comments" rows="auto,auto,auto,auto" columns="*,auto"
+                             class="reviews">
+                             <Image row="0" col="0" src="~/assests/images/48.jpg"></Image>
+                             <Label row="0" col="0" class="author" [text]="item.author" textWrap="true"></Label>
+                             <StackLayout row="0" col="1" colSpan="2">
+                                 <ns-starred-review [starredReviewRate]="item.stars"></ns-starred-review>
+                             </StackLayout>
+                             <Label row="2" col="0" colSpan="2" class="comment" [text]="item.comment"
+                                 textWrap="true"></Label>
+                             <Label row="3" class="hr" colSpan="2" textWrap="true"></Label>
 
-            </StackLayout>
-             <ListView [items]="product.productList" (loaded)="onLoaded($event)" (itemTap)="onItemTap($event)"
-                 class="list-group">
-                 <ng-template let-item="item" let-odd="odd" let-even="even">
-                 </ng-template>
-             </ListView>
-        </StackLayout>
-    </ScrollView>
-    <StackLayout row="1" class="btn-holder">
-        <Button class="btn btn-primary" text="Acheter" (tap)="acheter()"></Button>
-    </StackLayout>
-</GridLayout>
+                         </GridLayout>
+                     </StackLayout>
+
+                     <StackLayout class="add-avis">
+                         <Label text="Ajouter un Avis" class="title bold" textWrap="true"></Label>
+                         <TextView hint="Ajouter votre commentaire" (textChange)="onTextChange($event)" class="control-form"></TextView>
+                         <Button class="btn btn-secondary" text="Envoyer" (tap)="addAvis()"></Button>
+                     </StackLayout>
+                 </StackLayout>
+             </ScrollView>
 
 
+         </StackLayout>
+         <StackLayout row="1" class="btn-holder" backgroundColor="transparent">
+           <!--   <Button class="btn btn-primary" text="Acheter" (tap)="acheter()"></Button> -->
+                        <app-add-to-cart [productInfo]="product"
+                            (emitNbrArticleHandler)="emitNbrArticleHandler($event)">
+                        </app-add-to-cart>
 
+         </StackLayout>
+
+
+
+     </GridLayout>
+     <StackLayout horizontalAlignment="center" verticalAlignment="middle" id="popup"
+         [visibility]="showModal ? 'visible' : 'collapsed'">
+         <StackLayout class="starts-holder">
+
+             <StackLayout *ngFor="let star of stars;let i=index" class="stars">
+                 <Button class="star" (tap)="voter(i)">
+                     <FormattedString>
+                         <Span *ngFor="let st of star" left="0" top="0" text="&#xe9d9;" class="ico-moon"></Span>
+                     </FormattedString>
+                 </Button>
+             </StackLayout>
+
+         </StackLayout>
+     </StackLayout>
+ </AbsoluteLayout>

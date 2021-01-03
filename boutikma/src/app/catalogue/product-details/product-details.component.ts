@@ -1,6 +1,8 @@
+import { EventData, TextField } from '@nativescript/core';
 import { appData } from './../../data';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import * as AppSettings from '@nativescript/core/application-settings';
 
 @Component({
   selector: 'app-product-details',
@@ -10,40 +12,69 @@ import { ActivatedRoute } from '@angular/router';
 export class ProductDetailsComponent implements OnInit {
   public product  :any;
   public avis :any[];
-  appData = appData
+  public showModal:boolean;
+  comments:any[]=[];
+  public commment:string;
+  starValue:number;
+  appData = appData;
+  public selectedImage: any;
+  selectedImageIndex:any;
+  gallery:any[]=[];
+  qnte:number;
+  productInfo:any;
+
+  public stars = new Array<any>(
+    [1],
+    [1, 2],
+    [1, 2, 3],
+    [1, 2, 3, 4],
+    [1, 2, 3, 4, 5]);
+
+
   constructor(private activateRoute:ActivatedRoute) { }
-  private items = new Array<any>(
-    { id: 1, name: "Ter Stegen", role: "Goalkeeper" },
-    { id: 3, name: "Piqué", role: "Defender" },
-    { id: 4, name: "I. Rakitic", role: "Midfielder" },
-    { id: 5, name: "Sergio", role: "Midfielder" },
-    { id: 6, name: "Denis Suárez", role: "Midfielder" },
-    { id: 7, name: "Arda", role: "Midfielder" },
-    { id: 8, name: "A. Iniesta", role: "Midfielder" },
-    { id: 9, name: "Suárez", role: "Forward" },
-    { id: 10, name: "Messi", role: "Forward" },
-    { id: 11, name: "Neymar", role: "Forward" },
-    { id: 12, name: "Rafinha", role: "Midfielder" },
-    { id: 13, name: "Cillessen", role: "Goalkeeper" },
-    { id: 14, name: "Mascherano", role: "Defender" },
-    { id: 17, name: "Paco Alcácer", role: "Forward" },
-    { id: 18, name: "Jordi Alba", role: "Defender" },
-    { id: 19, name: "Digne", role: "Defender" },
-    { id: 20, name: "Sergi Roberto", role: "Midfielder" },
-    { id: 21, name: "André Gomes", role: "Midfielder" },
-    { id: 22, name: "Aleix Vidal", role: "Midfielder" },
-    { id: 23, name: "Umtiti", role: "Defender" },
-    { id: 24, name: "Mathieu", role: "Defender" },
-    { id: 25, name: "Masip", role: "Goalkeeper" }
-  )
+
   ngOnInit(): void {
     this.activateRoute.params.subscribe(data=>{
       const id=data.id || 1;
+      this.selectedImageIndex = 0;
       this.product = appData.productList.filter(prd=>prd.id==parseInt(id))[0];
+      this.comments = this.product.avis;
+      this.selectedImage = this.product.imageUrl;
+      this.gallery = this.product.gallery;
+      this.gallery.push(this.selectedImage);
+      this.gallery = this.gallery.reverse();
+     
     });
   }
 
-  acheter(){
-    
+  selectImage(id: any) {
+    this.selectedImageIndex=id;
+    this.selectedImage = this.gallery[id]
   }
+
+  voter(starvalue:number){
+    this.showModal = false;
+    this.starValue = starvalue;
+  }
+
+  acheter(){
+    if (!AppSettings.getString(`prd-${this.product.id}`))
+    AppSettings.setString(`prd-${this.product.id}`, `${this.product.id}`);
+  }
+
+  addAvis(){
+    this.showModal = true;
+    this.comments.push({})
+  }
+
+  public onTextChange(args:EventData){
+    const input=args.object as TextField;
+    this.commment = input.text;
+  }
+
+  emitNbrArticleHandler(event:any){
+this.qnte=event;
+//console.log(this.qnte)
+  }
+
 }

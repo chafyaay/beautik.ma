@@ -13,6 +13,9 @@ export const appData = {
                 {id:2,comment:'Best non stick we have purchased.',author:'Mangiar sano',dateComment:new Date(),stars:4.2},
                 {id:3,comment:'Best non stick we have purchased.',author:'Mangiar sano',dateComment:new Date(),stars:4.2},
             ],
+            gallery:[
+                '~/assets/images/products/1/gallery/1.jpg'
+            ],
             imageUrl: '~/assets/images/products/1.jpg',
         },
         {
@@ -32,6 +35,9 @@ export const appData = {
                 {id:6,comment:'Best non stick we have purchased.',author:'Mangiar sano',dateComment:new Date(),stars:4.2},
                 {id:7,comment:'Best non stick we have purchased.',author:'Mangiar sano',dateComment:new Date(),stars:4.2}
             ],
+            gallery:[
+                '~/assets/images/products/1/gallery/1.jpg'
+            ],
             imageUrl: '~/assets/images/products/2.jpg',
         },
         {
@@ -46,6 +52,9 @@ export const appData = {
                 {id:1,comment:'Best non stick we have purchased.',author:'Mangiar sano',dateComment:new Date(),stars:4.2},
                 {id:2,comment:'Best non stick we have purchased.',author:'Mangiar sano',dateComment:new Date(),stars:4.2},
                 {id:3,comment:'Best non stick we have purchased.',author:'Mangiar sano',dateComment:new Date(),stars:4.2},
+            ],
+            gallery:[
+                '~/assets/images/products/1/gallery/1.jpg'
             ],
             imageUrl: '~/assets/images/products/3.jpg',
         }
@@ -64,7 +73,15 @@ export const appData = {
                 {id:2,comment:'Best non stick we have purchased.',author:'Mangiar sano',dateComment:new Date(),stars:4.2},
                 {id:3,comment:'Best non stick we have purchased.',author:'Mangiar sano',dateComment:new Date(),stars:4.2},
             ],
+            gallery:[
+                '~/assets/images/products/1/1.jpg',
+                '~/assets/images/products/1/2.jpg',
+                '~/assets/images/products/1/3.jpg',
+                '~/assets/images/products/1/4.jpg',
+                '~/assets/images/products/1/5.jpg',
+            ],
             imageUrl: '~/assets/images/products/1.jpg',
+
         },
         {
             id: 1,
@@ -78,6 +95,13 @@ export const appData = {
                 {id:1,comment:'Best non stick we have purchased.',author:'Mangiar sano',dateComment:new Date(),stars:4.2},
                 {id:2,comment:'Best non stick we have purchased.',author:'Mangiar sano',dateComment:new Date(),stars:4.2},
                 {id:3,comment:'Best non stick we have purchased.',author:'Mangiar sano',dateComment:new Date(),stars:4.2},
+            ],
+            gallery: [
+                '~/assets/images/products/1/1.jpg',
+                '~/assets/images/products/1/2.jpg',
+                '~/assets/images/products/1/3.jpg',
+                '~/assets/images/products/1/4.jpg',
+                '~/assets/images/products/1/5.jpg',
             ],
             imageUrl: '~/assets/images/products/2.jpg',
         },
@@ -94,6 +118,9 @@ export const appData = {
                 {id:2,comment:'Best non stick we have purchased.',author:'Mangiar sano',dateComment:new Date(),stars:4.2},
                 {id:3,comment:'Best non stick we have purchased.',author:'Mangiar sano',dateComment:new Date(),stars:4.2},
             ],
+            gallery:[
+                '~/assets/images/products/1/gallery/1.jpg'
+            ],
             imageUrl: '~/assets/images/products/3.jpg',
         },
         {
@@ -108,6 +135,9 @@ export const appData = {
                 {id:1,comment:'Best non stick we have purchased.',author:'Mangiar sano',dateComment:new Date(),stars:4.2},
                 {id:2,comment:'Best non stick we have purchased.',author:'Mangiar sano',dateComment:new Date(),stars:4.2},
                 {id:3,comment:'Best non stick we have purchased.',author:'Mangiar sano',dateComment:new Date(),stars:4.2},
+            ],
+            gallery:[
+                '~/assets/images/products/1/gallery/1.jpg'
             ],
             imageUrl: '~/assets/images/products/4.jpg',
         },
@@ -124,6 +154,9 @@ export const appData = {
                 {id:2,comment:'Best non stick we have purchased.',author:'Mangiar sano',dateComment:new Date(),stars:4.2},
                 {id:3,comment:'Best non stick we have purchased.',author:'Mangiar sano',dateComment:new Date(),stars:4.2},
             ],
+            gallery:[
+                '~/assets/images/products/1/gallery/1.jpg'
+            ],
             imageUrl: '~/assets/images/products/5.jpg',
         },
         {
@@ -138,6 +171,9 @@ export const appData = {
                 {id:1,comment:'Best non stick we have purchased.',author:'Mangiar sano',dateComment:new Date(),stars:4.2},
                 {id:2,comment:'Best non stick we have purchased.',author:'Mangiar sano',dateComment:new Date(),stars:4.2},
                 {id:3,comment:'Best non stick we have purchased.',author:'Mangiar sano',dateComment:new Date(),stars:4.2},
+            ],
+            gallery:[
+                '~/assets/images/products/1/gallery/1.jpg'
             ],
             imageUrl: '~/assets/images/products/6.jpg',
         },
@@ -154,6 +190,9 @@ export const appData = {
                 {id:2,comment:'Best non stick we have purchased.',author:'Mangiar sano',dateComment:new Date(),stars:4.2},
                 {id:3,comment:'Best non stick we have purchased.',author:'Mangiar sano',dateComment:new Date(),stars:4.2},
             ],
+            gallery:[
+                '~/assets/images/products/1/gallery/1.jpg'
+            ],
             imageUrl: '~/assets/images/products/7.jpg',
         },
         {
@@ -168,6 +207,9 @@ export const appData = {
                 {id:1,comment:'Best non stick we have purchased.',author:'Mangiar sano',dateComment:new Date(),stars:4.2},
                 {id:2,comment:'Best non stick we have purchased.',author:'Mangiar sano',dateComment:new Date(),stars:4.2},
                 {id:3,comment:'Best non stick we have purchased.',author:'Mangiar sano',dateComment:new Date(),stars:4.2},
+            ],
+            gallery:[
+                '~/assets/images/products/1/gallery/1.jpg'
             ],
             imageUrl: '~/assets/images/products/8.jpg',
         },
@@ -184,6 +226,9 @@ export const appData = {
                 {id:2,comment:'Best non stick we have purchased.',author:'Mangiar sano',dateComment:new Date(),stars:4.2},
                 {id:3,comment:'Best non stick we have purchased.',author:'Mangiar sano',dateComment:new Date(),stars:4.2},
             ],
+            gallery:[
+                '~/assets/images/products/1/gallery/1.jpg'
+            ],
             imageUrl: '~/assets/images/products/9.jpg',
         },
         {
@@ -199,6 +244,9 @@ export const appData = {
                 {id:2,comment:'Best non stick we have purchased.',author:'Mangiar sano',dateComment:new Date(),stars:4.2},
                 {id:3,comment:'Best non stick we have purchased.',author:'Mangiar sano',dateComment:new Date(),stars:4.2},
             ],
+            gallery:[
+                '~/assets/images/products/1/gallery/1.jpg'
+            ],
             imageUrl: '~/assets/images/products/10.jpg',
         },
         {
@@ -213,6 +261,9 @@ export const appData = {
                 {id:1,comment:'Best non stick we have purchased.',author:'Mangiar sano',dateComment:new Date(),stars:4.2},
                 {id:2,comment:'Best non stick we have purchased.',author:'Mangiar sano',dateComment:new Date(),stars:4.2},
                 {id:3,comment:'Best non stick we have purchased.',author:'Mangiar sano',dateComment:new Date(),stars:4.2},
+            ],
+            gallery:[
+                '~/assets/images/products/1/gallery/1.jpg'
             ],
             imageUrl: '~/assets/images/products/11.jpg',
         },

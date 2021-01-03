@@ -1,0 +1,86 @@
+/* Add mobile styles for the component here.  */
+.card {
+    border-width: 1;
+    border-color: #f7f7f7;
+    border-bottom-width: 4;
+    border-radius: 5;
+    padding: 10;
+
+    .product-image {
+        border-color: #f7f7f7;
+        border-width: 1;
+        background-position: 50% 50%;
+        background-size: cover;
+        background-repeat: no-repeat;
+        margin: 0 10;
+        border-radius: 3;
+    }
+
+    .footer {
+        border-top-width: 1;
+        border-top-color: #f7f7f7;
+        padding: 0;
+        padding-top: 17;
+    }
+
+    .price {
+        font-family: Roboto-Bold;
+        font-size: 16;
+
+        &.new-price {
+            color: tomato;
+        }
+
+        &.init-price {
+            color: gray;
+            text-decoration: line-through;
+            font-size: 14;
+        }
+    }
+
+}
+
+.-btn {
+    height: 50;
+    padding: 10;
+    margin: 0;
+    
+
+    &.remove {
+        font-family: Roboto-Medium;
+    }
+    &.qnte{
+        font-size: 19;
+        font-family: Roboto-Medium;
+        border-width:0 ;
+        color: #cccccc;
+    }
+
+
+
+&.call{
+    margin-top: 30;
+    color: tomato;
+    border-width: 2;
+    border-color: tomato;
+    border-radius: 5;
+}
+
+&.order {
+    margin-top: 30;
+    background: tomato;
+    color: white;
+     margin-top: 30;
+     border-width: 2;
+     border-color: tomato;
+     border-radius: 5;
+}
+   
+
+}
+
+.total{
+   .h3{
+       color: gray;
+   } 
+}

@@ -35,8 +35,8 @@ ngOnChanges() {
        const reviewHolder =args.object as AbsoluteLayout;
        
       this._perWidth = reviewHolder.getActualSize().width * parseInt(this.starredReviewRate) / 5
-      console.log("++", this.starredReviewRate)
-      console.log(this._perWidth, reviewHolder.getActualSize().width)
+      //console.log("++", this.starredReviewRate)
+      //console.log(this._perWidth, reviewHolder.getActualSize().width)
 
     }, 10); 
 
