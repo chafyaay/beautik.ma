@@ -1,0 +1,79 @@
+<ActionBar title="c">
+    <NavigationButton text="&#xe93a;" class="ico-moon" visibility="visible"></NavigationButton>
+
+    <ActionItem ios.position="right">
+        <GridLayout width="60">
+
+        </GridLayout>
+    </ActionItem>
+</ActionBar>
+
+<StackLayout class="cart-details">
+
+    <ScrollView height="100%">
+        <StackLayout [formGroup]="signUpForm">
+
+
+            <StackLayout verticalAlignment="bottom" class="header rounded-bk">
+                <Label class="h1 page-title" text="Créez votre Compte Beautik.ma" textWrap="true"></Label>
+            </StackLayout>
+
+
+            <StackLayout class="form-group">
+                <Label class="form-label" text="Nom" textWrap="true"></Label>
+                <TextField class="form-control" (textChange)="ontextchange($event)" FormControlName="fname"
+                    hint="Entrez votre Nom" text=""></TextField>
+            </StackLayout>
+
+            <StackLayout class="form-group">
+                <Label class="form-label" text="Prénon" textWrap="true"></Label>
+                <TextField class="form-control" (textChange)="ontextchange($event)" FormControlName="lname"
+                    hint="Entrez votre Prénom" text="">
+                </TextField>
+            </StackLayout>
+
+            <StackLayout class="form-group">
+                <Label class="form-label" text="Email" textWrap="true"></Label>
+                <TextField class="form-control" (textChange)="ontextchange($event)" FormControlName="email"
+                    hint="Entrez votre Email" text=""></TextField>
+            </StackLayout>
+
+            <StackLayout class="form-group">
+                <Label class="form-label" text="password" textWrap="true"></Label>
+                <TextField class="form-control" (textChange)="ontextchange($event)" FormControlName="password"
+                    secured="true" hint="Entrez votre Mot de Passe" text=""></TextField>
+            </StackLayout>
+
+            <StackLayout class="form-group">
+                <Label class="form-label" text="Email" textWrap="true"></Label>
+                <TextField class="form-control" (textChange)="ontextchange($event)" FormControlName="repassword"
+                    secured="true" hint="Confirmez votre Mot de Passe" text=""></TextField>
+            </StackLayout>
+
+            <StackLayout class="form-group">
+                <Label class="form-label" text="Téléphone" textWrap="true"></Label>
+                <TextField class="form-control" (textChange)="ontextchange($event)" FormControlName="mobile"
+                    hint="Entrez votre Numéro de Téléphone" text=""></TextField>
+            </StackLayout>
+
+
+
+            <StackLayout class="form-group">
+                <Label class="form-label" text="Ville" textWrap="true"></Label>
+                <TextView class="form-control" (textChange)="ontextchange($event)" FormControlName="ville"
+                    hint="Entrez votre Ville" text=""></TextView>
+            </StackLayout>
+
+            <StackLayout class="form-group">
+                <Label class="form-label" text="Adress" textWrap="true"></Label>
+                <TextView class="form-control" (textChange)="ontextchange($event)" FormControlName="adress"
+                    hint="Entrez votre Adress" text=""></TextView>
+            </StackLayout>
+
+
+            <Button margin="30 17" class="btn" text="S'enregistrer" (tap)="submit()"></Button>
+
+
+        </StackLayout>
+    </ScrollView>
+</StackLayout>

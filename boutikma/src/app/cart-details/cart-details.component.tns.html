@@ -1,0 +1,58 @@
+<ActionBar title="Styling">
+    <NavigationButton text="&#xe93a;" class="ico-moon" visibility="visible"></NavigationButton>
+
+    <ActionItem ios.position="right">
+        <GridLayout width="60">
+            <app-navbar [cart]="cart"></app-navbar>
+        </GridLayout>
+    </ActionItem>
+</ActionBar>
+
+<StackLayout class="cart-details">
+    <ScrollView height="100%">
+        <StackLayout *ngIf="productInfo.length">
+            <GridLayout *ngFor="let item of productInfo;let id=index"
+                style="border-bottom-color: #eee;border-bottom-width:1 ;margin-bottom: 16;" rows="auto,auto,auto"
+                columns="auto,*">
+                <StackLayout row="0" col="0" [backgroundImage]="item.imageUrl" class="image-holder">
+                    <!-- image holder -->
+                </StackLayout>
+                <StackLayout row="0" col="1">
+                    <Label [text]="item.productname" class="medium" textWrap="true"></Label>
+                    <GridLayout columns="auto,auto,auto" class="add-to-cart">
+                        <Button col="0" class="-btn decrement ico-moon" text="&#xea0b;"
+                            (tap)="decrement(item.id,item._qnte)"></Button>
+                        <Button col="1" class="" [text]="item._qnte"></Button>
+                        <Button col="2" class="-btn decrement ico-moon" text="&#xea0a;"
+                            (tap)="crement(item.id,item._qnte)"></Button>
+                    </GridLayout>
+                    <Label class="medium">
+                        <FormattedString>
+                            <Span *ngIf="item.discount<=0"
+                                [text]="item._qnte+'x'+item.price +' = '+(item._qnte*item.price)+' Dhs'"></Span>
+                            <Span *ngIf="item.discount>0"
+                                [text]="item._qnte+'x'+item.price*item.discount*.01 +' = '+(item._qnte*(item.price*item.discount*.01)+' Dhs')"></Span>
+
+                        </FormattedString>
+                    </Label>
+                </StackLayout>
+
+
+
+            </GridLayout>
+            <GridLayout columns="*,*">
+                <Label col="0" class="bold h3" [text]="'TOTAL TCC:'" textWrap="true"></Label>
+                <Label col="1" class="bold h3" style="text-align: right;" [text]="total +'Dhs'" textWrap="true"></Label>
+            </GridLayout>
+
+            <StackLayout>
+                <Button class="btn " text="Continuez l'achat" (tap)="shipping()"></Button>
+                <Button class="btn " text="Appllez pour Commander" (tap)="call()"></Button>
+
+            </StackLayout>
+
+        </StackLayout>
+
+
+    </ScrollView>
+</StackLayout>

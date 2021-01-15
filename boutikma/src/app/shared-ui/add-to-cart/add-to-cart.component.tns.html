@@ -1,13 +1,6 @@
-
-      <GridLayout columns="auto * auto" class="add-to-cart" backgroundColor="transparent">
-            <Button  col="0" class="-btn decrement ico-moon" text="&#xea0b;"
-                (tap)="decrement()"></Button>
-            <Button [isEnabled]="nbrArticle>0" col="1" class="-btn add" text="Ajouter ({{nbrArticle}}) au Panier"
-                (tap)="addToCart()"></Button>
-            <Button col="2" class="-btn increment ico-moon" text="&#xea0a;"
-                (tap)="increment()"></Button>
-      </GridLayout>
-
-
-
-    
+<GridLayout columns="auto * auto" class="add-to-cart" backgroundColor="transparent">
+    <Button col="0" class="-btn decrement ico-moon" text="&#xea0b;" (tap)="decrement()"></Button>
+    <Button [isEnabled]="isEnabled" col="1" class="-btn add" text="Ajouter ({{nbrArticle}}) au Panier"
+        (tap)="addToCart()"></Button>
+    <Button col="2" class="-btn increment ico-moon" text="&#xea0a;" (tap)="increment()"></Button>
+</GridLayout>

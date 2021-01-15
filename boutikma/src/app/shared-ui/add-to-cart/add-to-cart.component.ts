@@ -1,60 +1,71 @@
+import { CartService } from './../../services/cart.service';
 import { BeforeCheckoutComponent } from './../before-checkout/before-checkout.component';
 import { Component, OnInit, Output, EventEmitter, Input, OnChanges, ViewContainerRef } from '@angular/core';
 import * as AppSettings from '@nativescript/core/application-settings';
 import { ModalDialogService, ModalDialogOptions } from '@nativescript/angular';
+import { setString } from '@nativescript/core/application-settings';
 
 @Component({
   selector: 'app-add-to-cart',
   templateUrl: './add-to-cart.component.html',
   styleUrls: ['./add-to-cart.component.scss']
 })
-export class AddToCartComponent implements OnInit,OnChanges {
-  nbrArticle=0;
-  @Output() emitNbrArticleHandler:EventEmitter<any>=new EventEmitter();
-  @Input() productInfo:any;
-  @Input() qnte=0;
-  productId:string;
+export class AddToCartComponent implements OnInit, OnChanges {
+  @Output() updateCart: EventEmitter<any> = new EventEmitter();
+  @Input() productInfo: any;
+  @Input() qnte: number;
+  isEnabled = false;
+  nbrArticle;
 
   constructor(
     private _modalService: ModalDialogService,
-    private _vcRef: ViewContainerRef) { }
+    private _vcRef: ViewContainerRef,
+    private cartService: CartService
+  ) { }
 
   ngOnInit(): void {
+    this.nbrArticle = 0;
   }
 
-  ngOnChanges(){
-    this.qnte = this.productInfo.qnte ;
-    this.productId = this.productInfo.id;
-    console.log('qunatity:',this.qnte)
+  ngOnChanges() {
+    this.isEnabled = this.productInfo._qnte > 0;
+    this.nbrArticle = this.qnte || 0;
   }
 
-  addToCart(){ 
-    const productInfo = JSON.stringify({...this.productInfo, _qnte: this.nbrArticle});
-    AppSettings.setString('cart',productInfo);
-    this.showModal();
+
+
+
+
+  addToCart() {
+    this.cartService.updateCart(this.productInfo.id, this.nbrArticle)
+    this.isEnabled = false;
+    this.updateCart.emit();
+    this.nbrArticle = 0
+    /* .subscribe(data => {
+      console.log('data')
+      console.log(AppSettings.getString('cart'))
+    }) */
   }
 
-  increment(){
-    if (this.nbrArticle>this.qnte) return;
-    else{
-          this.nbrArticle++;
-    this.emitNbrArticleHandler.emit(this.nbrArticle);
 
+
+  increment() {
+    if (this.nbrArticle > this.productInfo.qnte) return;
+    else {
+      this.nbrArticle++;
+      this.isEnabled = true;
+      //this.emitNbrArticleHandler.emit(this.nbrArticle);
     }
   }
 
-  decrement(){
-    if (this.nbrArticle<=0) return;
-    else{
-          this.nbrArticle--;
-    this.emitNbrArticleHandler.emit(this.nbrArticle);
-
+  decrement() {
+    if (this.nbrArticle <= 0) { this.isEnabled = false; return }
+    else {
+      this.nbrArticle--;
+      this.isEnabled = true;
+      //this.emitNbrArticleHandler.emit(this.nbrArticle);
     }
   }
-
-
-
-
 
   showModal(): void {
     const options: ModalDialogOptions = {

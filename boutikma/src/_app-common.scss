@@ -20,25 +20,26 @@
     font-weight: 400;
 }
 
-.pe{
+.pe {
     font-family: Pe-icon-7-stroke;
 }
+
 .ico-moon {
     font-family: IcoMoon-Free;
 }
 
-Label{
-font-family: Raleway,Raleway-Medium;
+Label {
+    font-family: Raleway, Raleway-Medium;
 }
 
-.btn{
+.btn {
     background: tomato;
     color: white;
     font-size: 18;
     font-weight: 400;
-    font-family: Raleway,Raleway-Medium;
+    font-family: Raleway, Raleway-Medium;
     border-radius: 6;
-    
+
 }
 
 .regular {
@@ -59,4 +60,58 @@ font-family: Raleway,Raleway-Medium;
 .extra-bold {
     font-family: Raleway-ExtraBold, Ralway;
     font-weight: 400;
+}
+
+
+.page-title {
+    font-family: Raleway-Bold,
+        Ralway;
+    font-size: 25;
+    margin: 36 0 20 0;
+    text-align: center;
+    color: tomato;
+    width: 70%;
+}
+
+.form-group {
+    // padding: 16;
+    //margin-top: 10;
+
+    .form-label {
+        font-size: 17;
+        font-weight: normal;
+        color: #000000;
+        margin: 24 auto 12 17;
+        font-family: Raleway-Regular, Raleway;
+    }
+
+    .form-control {
+        padding: 10;
+        border-radius: 6;
+        border-width: 1;
+        border-color: #9eacaa; // border-color: rgb(211, 231, 243);
+        font-family: Raleway-Regular, Raleway;
+        font-size: 14;
+        height: 48;
+        padding-left: 10;
+        color: #000000; //#544a45;
+
+        &.not-valid {
+            border-color: tomato;
+        }
+    }
+}
+
+.header {
+    height: 150;
+
+    background: #eee;
+
+    &.rounded-bk {
+        width: 100%;
+        background-repeat: no-repeat;
+        background-image: url('~/assets/images/rounded@2x.png');
+        background-position: 50% 50%;
+        background-size: cover;
+    }
 }

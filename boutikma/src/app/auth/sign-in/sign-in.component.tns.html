@@ -1,0 +1,59 @@
+<ActionBar title="c">
+    <NavigationButton text="&#xe93a;" class="ico-moon" visibility="visible"></NavigationButton>
+
+    <ActionItem ios.position="right">
+        <GridLayout width="60">
+
+        </GridLayout>
+    </ActionItem>
+</ActionBar>
+
+<StackLayout class="cart-details">
+
+    <ScrollView height="100%">
+        <StackLayout [formGroup]="signUpForm">
+
+
+            <StackLayout verticalAlignment="bottom" class="header rounded-bk">
+                <Label class="h1 page-title" text="S'Authentifier" textWrap="true"></Label>
+            </StackLayout>
+
+
+
+            <StackLayout class="form-group">
+                <Label class="form-label" text="Email / Numéro de Téléphone" textWrap="true"></Label>
+                <TextField class="form-control" (textChange)="ontextchange($event)" FormControlName="email"
+                    hint="Entrez votre Email ou votre Numéro de Téléphone" text=""></TextField>
+            </StackLayout>
+
+            <StackLayout class="form-group">
+                <Label class="form-label" text="password" textWrap="true"></Label>
+                <TextField class="form-control" (textChange)="ontextchange($event)" FormControlName="password"
+                    secured="true" hint="Entrez votre Mot de Passe" text=""></TextField>
+            </StackLayout>
+            <GridLayout columns="auto,*">
+                <Button col="0" class="stay-connected " androidElevation="0" (tap)="stayConnected()">
+                    <FormattedString>
+                        <Span class="ico-moon" [text]="!isStayConnectedChecked?'&#xea53;':'&#xea52;'"></Span>
+                        <Span class="link" text=" Rester connecté"></Span>
+                    </FormattedString>
+                </Button>
+                <Button col="1" class="link" horizontalAlignment="right" androidElevation="0" text="Mot de pass oublié"
+                    (tap)="forgetPassword()"></Button>
+
+            </GridLayout>
+
+
+
+
+
+
+
+
+
+            <Button margin="30 17" class="btn" text="S'enregistrer" (tap)="submit()"></Button>
+
+
+        </StackLayout>
+    </ScrollView>
+</StackLayout>

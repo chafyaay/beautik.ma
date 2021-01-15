@@ -1,68 +1,144 @@
-<StackLayout>
-    <StackLayout>
-        <GridLayout height="350" >
-            <Carousel #myCarousel debug="false
-            " [items]="appData.promotion" (pageChanged)="myChangePageEvent($event)"
-                android:indicatorAnimation="slide" indicatorColorUnselected="#eee" indicatorColor="#FF6C47" indicatorOffset="0, 25"
-                showIndicator="true">
-                
+<ActionBar title="Styling">
+    <NavigationButton text="&#xe93a;" class="ico-moon" visibility="visible"></NavigationButton>
 
-                <CarouselItem
-                *ngFor="let item of appData.promotion,let i=index"
-                padding="15"
-                verticalAlignment="middle"
-                (tap)="myTapPageEvent()">
-                    <StackLayout class="product-holder" [backgroundImage]="item.imageUrl">
-                        <GridLayout  rows="auto,*, auto" class="mask">
+    <ActionItem ios.position="right">
+        <GridLayout width="60">
+            <app-navbar [cart]="cart"></app-navbar>
+        </GridLayout>
+    </ActionItem>
+</ActionBar>
 
-                            <Label row="0" colSpan="2" [text]="item.productname" 
-                                class="h1 extra-bold" textWrap="true"></Label>
+<GridLayout rows="auto" columns="">
+    <ScrollView height="100%">
+        <StackLayout>
+            <GridLayout height="400" class="promotion">
 
-                            <GridLayout  row="1" col="1" rows="auto,auto, auto" columns="auto,auto">
+                <Carousel margin="0" padding="0" #myCarousel debug="false" [items]="appData.promotion"
+                    (pageChanged)="myChangePageEvent($event)" android:indicatorAnimation="slide"
+                    indicatorColorUnselected="#eee" indicatorColor="#FF6C47" indicatorOffset="0, 25"
+                    showIndicator="true">
 
-                                <Label row="0"  *ngIf="item.discount" class="discount"
-                                    horizontalAlignment="left" verticalAlignment="middle" 
-                                    textWrap="true">
+                    <CarouselItem margin="0" padding="0" *ngFor="let item of appData.promotion,let i=index"
+                        verticalAlignment="middle" (tap)="myTapPageEvent()" [backgroundImage]="item.imageUrl"
+                        class="CarouselItem">
+
+                        <GridLayout rows="auto,*,auto" class="mask">
+                            <Label row="0" class="h1" [text]="item.productname" textWrap="true"></Label>
+
+                            <StackLayout [visibility]="item.discount ? 'visible' : 'collapsed'"
+                                verticalAlignment="center" horizontalAlignment="center" row="1" class="h4 discount">
+                                <Label class="info bold">
                                     <FormattedString>
-                                        <Span class="rate h1 extra-bold" [text]="item.discount"></Span>
-                                        <Span class="percentage"  text="%"></Span>
-                                        <Span class="percentage"  text=" de réduction"></Span>
+                                        <Span [text]="item.discount"></Span>
+                                        <Span text="%" style="font-size: 18;"></Span>
                                     </FormattedString>
                                 </Label>
-                                    <Label row="2" class="medium price" textWrap="true">
-                                        <FormattedString>
-                                            <Span class="new-price"
-                                                [text]="(item.price*item.discount)/100+'Dhs'" ></Span>
-                                            <Span class="text" text=" / "></Span>
-                                            <Span class="old-price" [text]="item.price+'Dhs'"></Span>
-                                        </FormattedString>
-                                    </Label>
-                            </GridLayout>
-                            <Button marginTop="10" row="2" col="0" colSpan="2"  text="Acheter"   width="100%"
-                                class="btn btn-primary -rounded" (tap)="buyHandler()"></Button>
-                        </GridLayout>
-                    </StackLayout>
-               
-</CarouselItem>
-            </Carousel>
-        </GridLayout>
-        <StackLayout class="product-list">
-            <ListView [items]="appData.productList" (loaded)="onLoaded($event)" 
-                (itemTap)="onItemTap($event)" class="list-group">
-                <ng-template let-item="item" let-odd="odd" let-even="even">
-                    <StackLayout orientation="horizontal">
-                        <StackLayout [backgroundImage]="item.imageUrl" class="image">
-                        </StackLayout>
-                        <StackLayout>
-                            <Label [text]="item.productname" class="list-group-item"></Label>
-                            <StackLayout *ngIf="item.starredReview">
-                                <ns-starred-review [starredReviewRate]="item.starredReview"></ns-starred-review>
+                                <Label marginTop="-10" class="h3" padding="0" margin="0" text="de remise"
+                                    textWrap="true"></Label>
+
+
+                                <Label class="h4 bold price">
+                                    <FormattedString>
+                                        <Span [text]="item.price*item.discount*.01"
+                                            style="font-size: 24; color: tomato;"></Span>
+                                        <Span text="Dhs" style="font-size: 14; color: tomato;"></Span>
+
+                                        <Span text=" au lieu de " style="font-size: 14;"></Span>
+
+                                        <Span [text]="item.price"
+                                            style="text-decoration: line-through;color:gray;font-size: 24;"></Span>
+                                        <Span text="Dhs"
+                                            style="text-decoration: line-through;color:gray;font-size: 14;"></Span>
+
+                                    </FormattedString>
+                                </Label>
+
                             </StackLayout>
-                            <Label class="price" [text]="item.price+'Dhs'" textWrap="true"></Label>
+
+
+                            <Button row="2" verticalAlignment="bottom" class="btn" text="Ajoutez au Panier"
+                                (tap)="addToCart(i)"></Button>
+
+                        </GridLayout>
+
+
+
+                    </CarouselItem>
+                </Carousel>
+                <StackLayout verticalAlignment="bottom" class="rounded-bk">
+
+                </StackLayout>
+            </GridLayout>
+            <GridLayout class="product-list" *ngFor="let item of appData.productList">
+                <StackLayout class="item">
+                    <StackLayout class="card">
+                        <GridLayout rows="auto,auto" columns="auto,*,auto">
+                            <StackLayout row="0" col="0" [backgroundImage]="item.imageUrl" class="product-image">
+                            </StackLayout>
+                            <StackLayout row="0" col="1" class="details">
+                                <Label [text]="item.productname" class="list-group-item medium"></Label>
+
+                                <GridLayout columns="auto,auto" margin="0" padding="0" *ngIf="item.starredReview">
+                                    <StackLayout col="0">
+                                        <ns-starred-review [starredReviewRate]="item.starredReview">
+                                        </ns-starred-review>
+                                    </StackLayout>
+                                    <Label col="1" text=" ({{ item.avis.length }})" textWrap="true"></Label>
+                                </GridLayout>
+
+                                <Label margin="17 0 0 0" padding="0" *ngIf="!item.discount">
+                                    <FormattedString>
+                                        <Span class="h3 bold price" [text]="item.price" textWrap=" true"></Span>
+                                        <Span class="h3 bold price" style="font-size: 16;" text=" Dhs"
+                                            textWrap=" true"></Span>
+                                    </FormattedString>
+                                </Label>
+
+                                <Label margin="17 0 0 0" padding="0" *ngIf="item.discount" class="new-price">
+                                    <FormattedString>
+                                        <Span class="h3 bold price" [text]="(item.price*item.discount)/100"
+                                            textWrap=" true"></Span>
+                                        <Span class="h3 bold price" style="font-size: 16;" text=" Dhs"
+                                            textWrap=" true"></Span>
+                                    </FormattedString>
+                                </Label>
+
+                                <Label margin="0" padding="0" *ngIf="item.discount" class="old-price h3 bold">
+                                    <FormattedString>
+                                        <Span [text]="item.price" style="text-decoration: line-through; color: gray;"
+                                            textWrap=" true"></Span>
+                                        <Span class="h4" style="text-decoration: line-through;color: gray;" text=" Dhs "
+                                            textWrap=" true"></Span>
+                                        <Span text=" {{item.discount}} % "
+                                            style="border-radius:4;background: orange; color: white; "></Span>
+                                    </FormattedString>
+                                </Label>
+
+                            </StackLayout>
+
+                            <Label verticalAlignment="middle" col="2" text="&#xea3c;" class="ico-moon" textWrap="true"
+                                style="padding: 17;color:#eee; font-size: 30;"></Label>
+
+                        </GridLayout>
+
+                        <StackLayout width="100%" class="footer">
+                            <app-add-to-cart [productInfo]="item">
+                            </app-add-to-cart>
+
                         </StackLayout>
                     </StackLayout>
-                </ng-template>
-            </ListView>
+
+
+                </StackLayout>
+
+
+
+
+            </GridLayout>
         </StackLayout>
-    </StackLayout>
-</StackLayout>
+
+    </ScrollView>
+    <Button class="payement Bold" horizontalAlignment="left" verticalAlignment="top" margin="60"
+        [visibility]="showPayementButton ? 'visible' : 'collapsed'" text="Panier" (tap)="onCartDetails()"></Button>
+
+</GridLayout>
