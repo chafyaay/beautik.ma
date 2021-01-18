@@ -63,5 +63,7 @@ export class SignUpComponent implements OnInit {
   setVialidatorStyle(fname: string) {
     if (this.f.get(fname).invalid) return 'not-valid'
   }
+  submit() {
 
+  }
 }

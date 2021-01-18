@@ -1,3 +1,5 @@
+import { OrderComponent } from './order/order.component';
+import { ForgotPasswordComponent } from './auth/forgot-password/forgot-password.component';
 import { SignInComponent } from './auth/sign-in/sign-in.component';
 import { BeforeCheckoutComponent } from '@src/app/shared-ui/before-checkout/before-checkout.component';
 import { ProductDetailsComponent } from './catalogue/product-details/product-details.component';
@@ -11,7 +13,7 @@ import { SignUpComponent } from './auth/sign-up/sign-up.component';
 export const routes: Routes = [
   {
     path: '',
-    redirectTo: '/sign-in',
+    redirectTo: '/order',
     pathMatch: 'full',
   },
   {
@@ -41,5 +43,13 @@ export const routes: Routes = [
   {
     path: 'sign-in',
     component: SignInComponent,
+  },
+  {
+    path: 'forgot-password',
+    component: ForgotPasswordComponent,
+  },
+  {
+    path: 'order',
+    component: OrderComponent,
   },
 ];

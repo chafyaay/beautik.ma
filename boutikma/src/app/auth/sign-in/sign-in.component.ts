@@ -11,7 +11,7 @@ import { EventData } from '@nativescript/core';
 export class SignInComponent implements OnInit {
 
   signUpForm: FormGroup;
-  isStayConnectedChecked = false;
+  public isStayConnectedChecked = false;
 
   constructor(private fb: FormBuilder, private route: NavigatorService) { }
 
@@ -47,6 +47,9 @@ export class SignInComponent implements OnInit {
     this.isStayConnectedChecked = !this.isStayConnectedChecked;
   }
   forgetPassword() {
-    this.route.navigate('forgotten-password', { name: 'slide', duration: 500, cuve: 'e' });
+    this.route.navigate('forgot-password', { name: 'slide', duration: 500, cuve: 'e' });
+  }
+  submit() {
+
   }
 }

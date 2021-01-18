@@ -1,3 +1,6 @@
+import { AccordionComponent } from '@src/app/accordion/accordion.component';
+import { OrderComponent } from './order/order.component';
+import { ForgotPasswordComponent } from './auth/forgot-password/forgot-password.component';
 import { SignUpComponent } from './auth/sign-up/sign-up.component';
 import { ShippingComponent } from './shipping/shipping.component';
 import { SharedUiModule } from './shared-ui/shared-ui.module';
@@ -11,7 +14,6 @@ import { CatalogueModule } from './catalogue/catalogue.module.tns';
 import { CartDetailsComponent } from './cart-details/cart-details.component';
 import { ReactiveFormsModule } from '@angular/forms';
 
-
 // Uncomment and add to NgModule imports if you need to use two-way binding and/or HTTP wrapper
 // import { NativeScriptFormsModule, NativeScriptHttpClientModule } from '@nativescript/angular';
 
@@ -21,18 +23,18 @@ import { ReactiveFormsModule } from '@angular/forms';
     HomeComponent,
     CartDetailsComponent,
     ShippingComponent,
-    SignUpComponent
+    SignUpComponent,
+    ForgotPasswordComponent,
+    OrderComponent,
+    AccordionComponent
   ],
   imports: [
     NativeScriptModule,
+    ReactiveFormsModule,
+    NativeScriptFormsModule,
     AppRoutingModule,
-
-
     SharedUiModule,
     CatalogueModule,
-
-    ReactiveFormsModule,
-    NativeScriptFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent],

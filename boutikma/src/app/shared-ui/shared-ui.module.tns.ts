@@ -12,13 +12,15 @@ import { AddToCartComponent } from './add-to-cart/add-to-cart.component';
     StarredReviewComponent,
     NavbarComponent,
     AddToCartComponent,
-    BeforeCheckoutComponent
+    BeforeCheckoutComponent,
+
   ],
   exports: [
     StarredReviewComponent,
     NavbarComponent,
     AddToCartComponent,
-    BeforeCheckoutComponent
+    BeforeCheckoutComponent,
+
   ],
   entryComponents: [
     StarredReviewComponent,
